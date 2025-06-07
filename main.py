@@ -1,9 +1,9 @@
 import streamlit as st
-from win32com.client import Dispatch
 import speech_recognition as sr
 import webbrowser
 from datetime import datetime
 import time
+import pyttsx3
 
 # Initialize session state variables
 if 'messages' not in st.session_state:
@@ -33,8 +33,9 @@ def takeCommand():
 
 def say(text):
     try:
-        speaker = Dispatch("SAPI.SpVoice")
-        speaker.Speak(text)
+        engine = pyttsx3.init()
+        engine.say(text)
+        engine.runAndWait()
     except Exception as e:
         st.error(f"Error in text-to-speech: {str(e)}")
 

@@ -1,3 +1,3 @@
 streamlit
 SpeechRecognition
-pywin32
+pyttsx3
